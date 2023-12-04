@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <div class="section1">
+            <h1 id="title">TO DO LIST</h1>
+            <input type="checkbox" onclick="switchTheme()">Dark Mode</button>
+            <p>
+                <label for="new-task">Add Tasks</label>
+                <input id="new-task" type="text">
+                <button class="light-mode" onclick="addNewTask()">Add</button>
+            </p>
+        </div>
+        <div class="section2">
+            <h3>To-do</h3>
+            <ul id="incomplete-tasks"></ul>
+        </div>
+        <div class="section3">
+            <h3>Completed Tasks</h3>
+            <ul id="completed-tasks">
+                <li>
+                    <input type="checkbox" checked onclick="moveTask()">
+                    <label>Learn JavaScript</label>
+                    <button class="edit light-mode" onclick="editTask()">Edit</button>
+                    <button class="delete light-mode" onclick="deleteTask()">Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div class="section4">
+            <button id="clear" onclick="clearList()">
+                <p>Clear</p>
+            </button>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

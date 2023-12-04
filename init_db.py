@@ -9,12 +9,12 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO tasks (content) VALUES (?)",
-            ('Create to-do list')
+cur.execute("INSERT INTO tasks (content, completed) VALUES (?, ?)",
+            ('Create to-do list', 1)
             )
 
 cur.execute("INSERT INTO tasks (content) VALUES (?)",
-            ('Load database')
+            ('Load database',)
             )
 
 connection.commit()

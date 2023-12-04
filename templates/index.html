@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 id="title">{% block title %} TO DO LIST {% endblock %}</h1>
+    <div class="section1 light-mode">
+        <input type="checkbox" onclick="switchTheme()">Dark Mode</button>
+        <p>
+            <label for="new-task">Add Tasks</label>
+            <input id="new-task" type="text">
+            <button class="light-mode" onclick="addNewTask()">Add</button>
+        </p>
+    </div>
+    <div class="section2">
+        <h3>To-do</h3>
+        <ul id="incomplete-tasks">
+            {% for task in inctasks %}
+            <li>
+                <input type="checkbox" onclick="moveTask()">
+                <label>{{ task['content'] }}</label>
+                <button class="edit light-mode" onclick="editTask()">Edit</button>
+                <button class="delete light-mode" onclick="deleteTask()">Delete</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section3">
+        <h3>Completed Tasks</h3>
+        <ul id="completed-tasks">
+            {% for task in comtasks %}
+            <li>
+                <input type="checkbox" checked onclick="moveTask()">
+                <label>{{ task['content'] }}</label>
+                <button class="edit light-mode" onclick="editTask()">Edit</button>
+                <button class="delete light-mode" onclick="deleteTask()">Delete</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section4">
+        <button id="clear" class="light-mode" onclick="clearList()">
+            <p>Clear</p>
+        </button>
+    </div>
+    
+{% endblock %}

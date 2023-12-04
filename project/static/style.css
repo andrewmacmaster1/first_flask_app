@@ -1,15 +1,27 @@
 /* Basic Style */
 
 body {
+    
+    font-family: Lato, sans-serif;
+}
+
+body.light-mode {
     background: #fff;
     color: #333;
-    font-family: Lato, sans-serif;
     background: palegreen;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, palegreen, papayawhip);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, palegreen, papayawhip);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+body.dark-mode {
+    background: black;
+    color: antiquewhite;
+    background: -webkit-linear-gradient(to right, #333, rgb(7, 0, 104));
+    background: linear-gradient(to right, #333, rgb(7, 0, 104));
+
 }
 
 
@@ -47,9 +59,7 @@ button {
 }
     
 button {    
-    background-color: #008CBA;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -58,6 +68,16 @@ button {
     margin: 5px;
     font-size: 13px;
     border-radius: 10%;
+}
+
+button.light-mode {
+    background-color: #008CBA;
+    color: white;
+}
+
+button.dark-mode {
+    background-color:rgb(0, 73, 156);
+    color:antiquewhite;
 }
     
 button:hover {    
@@ -70,30 +90,43 @@ button:hover {
     
 h3,    
 label[for='new-task'] {    
-    color: #333;
+    
     font-weight: 700;
     font-size: 15px;
-    border-bottom: 2px solid #333;
+    
     padding: 30px 0 10px;
     margin: 0;
     text-transform: uppercase;
 }
+
+h3.light-mode,    
+label[for='new-task'].light-mode {
+    color: #333;
+    border-bottom: 2px solid #333;
+}
+
+h3.dark-mode,    
+label[for='new-task'].dark-mode {
+    color:antiquewhite;
+    border-bottom: antiquewhite;
+}
     
-input[type="text"] {    
+input[type="text"] {  
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #888;  
     margin: 0;
     font-size: 18px;
     line-height: 18px;
     height: 18px;
     padding: 10px;
-    border: 1px solid #ddd;
-    background: #fff;
     border-radius: 6px;
     font-family: Lato, sans-serif;
-    color: #888;
     width: 150;
     display: block;
     margin: 0 0 20px;
 }
+
     
 input[type="text"]:focus {    
     color: #333;

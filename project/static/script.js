@@ -27,6 +27,11 @@ function addNewTask() {
     //create edit button and add to li
     var editButton = document.createElement("button");
     editButton.setAttribute("class", "edit");
+    if (light) {
+        editButton.classList.toggle("light-mode")
+    } else {
+        editButton.classList.toggle("dark-mode")
+    }
     editButton.setAttribute("onclick", "editTask()");
     editButton.innerText = "Edit";
     li.appendChild(editButton)
@@ -34,6 +39,11 @@ function addNewTask() {
     //create edit button and add to li
     var deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "delete");
+    if (light) {
+        deleteButton.classList.toggle("light-mode")
+    } else {
+        deleteButton.classList.toggle("dark-mode")
+    }
     deleteButton.setAttribute("onclick", "deleteTask()");
     deleteButton.innerText = "Delete";
     li.appendChild(deleteButton)
@@ -73,6 +83,11 @@ function editTask() {
 
     var saveButton = document.createElement("button");
     saveButton.setAttribute("class", "save");
+    if (light) {
+        saveButton.classList.toggle("light-mode")
+    } else {
+        saveButton.classList.toggle("dark-mode")
+    }
     saveButton.setAttribute("onclick", "saveTask()");
     saveButton.innerText = "Save";
 
@@ -90,6 +105,11 @@ function saveTask() {
 
     var editButton = document.createElement("button");
     editButton.setAttribute("class", "edit");
+    if (light) {
+        editButton.classList.toggle("light-mode")
+    } else {
+        editButton.classList.toggle("dark-mode")
+    }
     editButton.setAttribute("onclick", "editTask()");
     editButton.innerText = "Edit";
 
@@ -101,3 +121,20 @@ function clearList() {
     document.getElementById("completed-tasks").innerHTML = "";
 }
 
+function switchTheme() {
+    console.clear();
+    if (light) {
+        elements=Array.prototype.slice.call(document.getElementsByClassName('light-mode'));
+        light = false;
+    } else {
+        elements=Array.prototype.slice.call(document.getElementsByClassName('dark-mode'));
+        light = true;
+    }
+    for (element of elements) {
+        console.log(element)
+        element.classList.toggle("light-mode");
+        element.classList.toggle("dark-mode");
+    }
+    
+    console.log(light)
+}

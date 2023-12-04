@@ -149,7 +149,14 @@ input#new-task {
 li {    
     overflow: hidden;
     padding: 20px 0;
+}
+
+li.light-mode {
     border-bottom: 1px solid #eee;
+}
+
+li.dark-mode {
+    border-bottom: 1px solid black;
 }
     
 li>input[type="checkbox"] {    

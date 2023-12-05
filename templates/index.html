@@ -4,11 +4,13 @@
     <h1 id="title">{% block title %} TO DO LIST {% endblock %}</h1>
     <div class="section1 light-mode">
         <input type="checkbox" onclick="switchTheme()">Dark Mode</button>
-        <p>
-            <label for="new-task">Add Tasks</label>
-            <input id="new-task" type="text">
-            <button class="light-mode" onclick="addNewTask()">Add</button>
-        </p>
+        <form method="POST">
+            <p>
+                <label for="new-task">Add Tasks</label>
+                <input id="new-task" type="text" name="task" value="{{ request.form['task'] }}">
+                <button class="light-mode" type="submit">Add</button>
+            </p>
+        </form>
     </div>
     <div class="section2">
         <h3>To-do</h3>

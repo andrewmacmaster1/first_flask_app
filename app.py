@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, request, redirect, url_for, abort
 import sqlite3
+import pandas as pd
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkeythisisasecretkey'
@@ -19,12 +20,17 @@ def get_task(task_id):
     return task
 
 @app.route("/", methods=['GET'])
-def load_page():
+def load_page(light=True):
+    if light:
+        mode = ''
+    else:
+        mode = 'onload="switchTheme()"'
     conn = get_db_connection()
     inctasks = conn.execute('SELECT * FROM tasks WHERE completed = 0').fetchall()
     comtasks = conn.execute('SELECT * FROM tasks WHERE completed = 1').fetchall()
     conn.close()
-    return render_template('index.html', inctasks=inctasks, comtasks=comtasks)
+    print(mode)
+    return render_template('index.html', mode=mode, inctasks=inctasks, comtasks=comtasks)
 
 @app.route("/", methods=['POST'])
 def create_task():
@@ -38,7 +44,7 @@ def create_task():
         conn.commit()    
         conn.close()
     
-    return redirect(url_for('load_page'))
+    return redirect(url_for('load_page', light=False))
 
 @app.route('/<int:id>/delete/', methods=['POST'])
 def delete(id):

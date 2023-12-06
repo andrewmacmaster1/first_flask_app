@@ -76,23 +76,34 @@ function editTask() {
     var taskLabel = currentTask.children[1];
     var editButton = currentTask.children[2];
 
+    var postFrame = document.createElement("form")
+    postFrame.setAttribute("method", "post")
+
     var inputBox = document.createElement("input");
     inputBox.setAttribute("type", "text");
+    inputBox.setAttribute("id", taskLabel.id)
     inputBox.setAttribute("value", taskLabel.innerText);
+    inputBox.setAttribute("name", "edit_task");
     inputBox.style.display = 'block';
 
     var saveButton = document.createElement("button");
     saveButton.setAttribute("class", "save");
     if (light) {
-        saveButton.classList.toggle("light-mode")
+        saveButton.classList.toggle("light-mode");
     } else {
-        saveButton.classList.toggle("dark-mode")
+        saveButton.classList.toggle("dark-mode");
     }
-    saveButton.setAttribute("onclick", "saveTask()");
+    saveButton.setAttribute("type", "submit");
     saveButton.innerText = "Save";
 
     currentTask.replaceChild(inputBox, taskLabel);
     currentTask.replaceChild(saveButton, editButton);
+
+    
+    parent = currentTask.parentElement;
+    console.log(parent, currentTask);
+    parent.replaceChild(currentTask, postFrame);
+    postFrame.appendChild(currentTask);
 }
 
 function saveTask() {

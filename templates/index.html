@@ -17,10 +17,14 @@
         <ul id="incomplete-tasks">
             {% for task in inctasks %}
             <li>
-                <input type="checkbox" onclick="moveTask()">
-                <label>{{ task['content'] }}</label>
-                <button class="edit light-mode" onclick="editTask()">Edit</button>
-                <button class="delete light-mode" onclick="deleteTask()">Delete</button>
+                <form action="{{ url_for('move_task', id=task['id']) }}" method="POST">
+                    <input type="checkbox" onChange="this.form.submit()">
+                </form>
+                <label id="{{ task['id'] }}">{{ task['content'] }}</label>
+                <button id="{{ task['id'] }}" class="edit light-mode" onclick="editTask()">Edit</button>
+                <form action="{{ url_for('delete', id=task['id']) }}" method="POST">
+                    <button id="{{ task['id'] }}" class="delete light-mode" type="submit">Delete</button>
+                </form>
             </li>
             {% endfor %}
         </ul>
@@ -30,18 +34,22 @@
         <ul id="completed-tasks">
             {% for task in comtasks %}
             <li>
-                <input type="checkbox" checked onclick="moveTask()">
-                <label>{{ task['content'] }}</label>
-                <button class="edit light-mode" onclick="editTask()">Edit</button>
-                <button class="delete light-mode" onclick="deleteTask()">Delete</button>
+                <form action="{{ url_for('move_task', id=task['id']) }}" method="POST">
+                    <input type="checkbox" checked onChange="this.form.submit()">
+                </form>
+                <label id="{{ task['id'] }}">{{ task['content'] }}</label>
+                <button id="{{ task['id'] }}" class="edit light-mode" onclick="editTask()">Edit</button>
+                <form action="{{ url_for('delete', id=task['id']) }}" method="POST">
+                    <button class="delete light-mode" type="submit">Delete</button>
+                </form>
             </li>
             {% endfor %}
         </ul>
     </div>
     <div class="section4">
-        <button id="clear" class="light-mode" onclick="clearList()">
-            <p>Clear</p>
-        </button>
+        <form action="{{ url_for('clear') }}" method="POST">
+            <button id="clear" class="light-mode" type="submit">Clear</button>
+        </form>
     </div>
     
 {% endblock %}

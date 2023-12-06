@@ -4,7 +4,7 @@ import os
 connection = sqlite3.connect('database.db')
 
 print(os.getcwd())
-with open('first-flask-app\schema.sql') as f:
+with open('schema.sql') as f:
     connection.executescript(f.read())
 
 cur = connection.cursor()
